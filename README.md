@@ -1,1 +1,1 @@
-# bootique-jersey-demo
+# bootique-liquibase-demo
