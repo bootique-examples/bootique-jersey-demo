@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="test" author="ebondareva" context="test_1">
+        <createTable tableName="TEST_1">
+            <column name="ONE" type="VARCHAR(16)"></column>
+            <column name="TWO" type="VARCHAR(16)"></column>
+            <column name="THREE" type="VARCHAR(16)"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="test_insert" author="ebondareva" context="test_1">
+        <insert tableName="TEST_1">
+            <column name="ONE" value="One"></column>
+            <column name="TWO" value="Two"></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
