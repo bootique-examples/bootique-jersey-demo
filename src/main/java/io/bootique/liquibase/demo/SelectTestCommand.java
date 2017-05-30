@@ -13,28 +13,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SelectCommand extends CommandWithMetadata {
+public class SelectTestCommand extends CommandWithMetadata {
 
     private Provider<DataSourceFactory> dataSource;
 
     @Inject
-    public SelectCommand(Provider<DataSourceFactory> dataSource) {
-        super(CommandMetadata.builder(SelectCommand.class).description("Select from DB").build());
+    public SelectTestCommand(Provider<DataSourceFactory> dataSource) {
+        super(CommandMetadata.builder(SelectTestCommand.class).name("select-test").shortName('s').description("Select from DB").build());
         this.dataSource = dataSource;
     }
 
     @Override
     public CommandOutcome run(Cli cli) {
-
         try {
             Connection connection = dataSource.get().forName("test").getConnection();
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM TEST_2");
+            ResultSet rs = statement.executeQuery("SELECT * FROM TEST");
 
             while (rs.next()) {
-
-                System.out.println("column : " + rs.getString("ONE_2"));
+                System.out.println("ID : " + rs.getString("ID"));
+                System.out.println("NAME : " + rs.getString("NAME"));
+                System.out.println("ORDER : " + rs.getInt("ORDER"));
             }
 
         } catch (SQLException e) {

@@ -31,12 +31,6 @@ public class TableIT {
         assertEquals("AA", row[1]);
         assertEquals(1, a.getRowCount());
 
-        Table test = DatabaseChannel.get(runtime).newTable("TEST").columnNames("ONE", "TWO").build();
-        Object[] testRow = test.selectOne();
-        assertEquals("One", testRow[0]);
-        assertEquals("Two", testRow[1]);
-        assertEquals(1, test.getRowCount());
-
         // rerun....
         runtime = testFactory
                 .app("-c", "classpath:io.bootique.liquibase.demo/migrations1.yml", "-u")

@@ -15,8 +15,9 @@ public class Application implements Module {
     @Override
     public void configure(Binder binder) {
         BQCoreModule.extend(binder)
-                .addCommand(SelectCommand.class);
+                .addCommand(SelectTestCommand.class);
 
-        LiquibaseModule.extend(binder).initAllExtensions().addChangeLog(new ResourceFactory("classpath:io.bootique.liquibase.demo/changelog2.xml"));
+        //add change log
+        LiquibaseModule.extend(binder).addChangeLog(new ResourceFactory("classpath:io.bootique.liquibase.demo/changelog_2.xml"));
     }
 }

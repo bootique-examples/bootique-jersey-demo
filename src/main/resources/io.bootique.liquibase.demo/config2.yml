@@ -1,0 +1,9 @@
+jdbc:
+  test:
+    url: jdbc:derby:target/derby/migrations1;create=true
+    maxActive: 2
+    
+liquibase:
+  datasource: test
+  changeLogs: # change log is declared directly in the file
+    - classpath:io.bootique.liquibase.demo/changelog_1_2.yml
