@@ -1,7 +1,7 @@
-  [![Build Status](https://travis-ci.org/bootique-examples/bootique-liquibase-demo.svg)](https://travis-ci.org/bootique-examples/bootique-liquibase-demo)
+[![Build Status](https://travis-ci.org/bootique-examples/bootique-liquibase-demo.svg)](https://travis-ci.org/bootique-examples/bootique-liquibase-demo)
 # bootique-liquibase-demo
 
-A simple example that explains how to migrate data into a database via [Liquibase](http://www.liquibase.org) integrated for [Bootique](http://bootique.io). 
+A simple example that explains how to migrate data via [Liquibase](http://www.liquibase.org) integrated for [Bootique](http://bootique.io). 
    
 *For additional help/questions about this example send a message to
 [Bootique forum](https://groups.google.com/forum/#!forum/bootique-user).*
@@ -62,11 +62,11 @@ Provide required configuration via *config1.yml*:
 
 Run migration:
 
-    --config=classpath:io.bootique.liquibase.demo/config1.yml --update
+    java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --update
     
-Check data migration via --select-test command:
+Check data via --select-test command:
     
-    --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
+    java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
 
 Newly created table "TEST" data is successfully printed:   
     
@@ -88,19 +88,19 @@ Consider configuration  *config2.yml*:
       changeLogs: # change log is declared directly in the file
         - classpath:io.bootique.liquibase.demo/changelog_1_2.yml
 
-Firstly, clear database simply having called:
+Firstly, rebuild simply having called:
     
-    mvn clean
+    mvn clean package
     
-Run migration:
+Then run migration with *config2.yml*:
 
-    --config=classpath:io.bootique.liquibase.demo/config2.yml --update
+    java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --update
     
-Check data migration via --select-test command:
+Check data via --select-test command:
         
-    --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test
+    java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test
     
-Expected result: 
+Expected result is error since "TEST" table created in changelog_2.xml overridden by YAML config:
 
     ...
         Caused by: ERROR 42X05: Table/View 'TEST' does not exist.
