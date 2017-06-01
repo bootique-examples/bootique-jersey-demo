@@ -25,18 +25,17 @@ public class SelectTestCommand extends CommandWithMetadata {
 
     @Override
     public CommandOutcome run(Cli cli) {
-        try {
-            Connection connection = dataSource.get().forName("test").getConnection();
-            Statement statement = connection.createStatement();
+        try (Connection connection = dataSource.get().forName("test").getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                try (ResultSet rs = statement.executeQuery("SELECT * FROM TEST")) {
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM TEST");
-
-            while (rs.next()) {
-                System.out.println("ID : " + rs.getString("ID"));
-                System.out.println("NAME : " + rs.getString("NAME"));
-                System.out.println("ORDER : " + rs.getInt("ORDER"));
+                    while (rs.next()) {
+                        System.out.println("ID : " + rs.getString("ID"));
+                        System.out.println("NAME : " + rs.getString("NAME"));
+                        System.out.println("ORDER : " + rs.getInt("ORDER"));
+                    }
+                }
             }
-
         } catch (SQLException e) {
             return CommandOutcome.failed(1, e);
         }
