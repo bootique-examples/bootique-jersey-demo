@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create_test_table" author="unknown">
+        <createTable tableName="TEST">
+            <column name="ID" type="java.sql.Types.VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="java.sql.Types.VARCHAR(32)"></column>
+            <column name="ORDER" type="java.sql.Types.INTEGER"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_pk_test" author="unknown">
+        <addPrimaryKey tableName="TEST" columnNames="ID"/>
+    </changeSet>
+
+    <changeSet id="insert_test" author="unknown">
+        <insert tableName="TEST">
+            <column name="ID" value="1"></column>
+            <column name="NAME" value="Test Name"></column>
+            <column name="ORDER" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

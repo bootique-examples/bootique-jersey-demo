@@ -1,0 +1,8 @@
+jdbc:
+  test:
+    url: jdbc:derby:target/derby/migrations1;create=true
+    maxActive: 2
+
+liquibase:
+  datasource: test
+  # changelog provided in java
