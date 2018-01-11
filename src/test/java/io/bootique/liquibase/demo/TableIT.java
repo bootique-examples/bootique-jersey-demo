@@ -1,9 +1,9 @@
 package io.bootique.liquibase.demo;
 
+import io.bootique.BQRuntime;
 import io.bootique.command.CommandOutcome;
 import io.bootique.jdbc.test.DatabaseChannel;
 import io.bootique.jdbc.test.Table;
-import io.bootique.test.BQTestRuntime;
 import io.bootique.test.junit.BQTestFactory;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -17,7 +17,7 @@ public class TableIT {
 
     @Test
     public void testMigration_SingleSet() {
-        BQTestRuntime runtime = testFactory
+        BQRuntime runtime = testFactory
                 .app("-c", "classpath:io.bootique.liquibase.demo/migrations1.yml", "-u")
                 .autoLoadModules()
                 .createRuntime();
