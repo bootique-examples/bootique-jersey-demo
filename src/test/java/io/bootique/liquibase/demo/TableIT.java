@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TableIT {
     @Rule
@@ -29,7 +29,7 @@ public class TableIT {
         Object[] row = a.selectOne();
         assertEquals(1, row[0]);
         assertEquals("AA", row[1]);
-        assertEquals(1, a.getRowCount());
+        a.matcher().assertMatches(1);
 
         // rerun....
         runtime = testFactory
@@ -38,8 +38,7 @@ public class TableIT {
                 .createRuntime();
 
         result = runtime.run();
-        Assert.assertTrue(result.isSuccess());
-
-        assertEquals(1, a.getRowCount());
+        assertTrue(result.isSuccess());
+        a.matcher().assertMatches(1);
     }
 }

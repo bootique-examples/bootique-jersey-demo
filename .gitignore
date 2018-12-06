@@ -1,5 +1,13 @@
+.classpath
+.project
+.settings
+.externalToolBuilders
+.DS_Store
+.metadata
+.recommenders
 target
 *.iml
 .idea
-derby.log
 dependency-reduced-pom.xml
+hs_err_pid*
+derby.log

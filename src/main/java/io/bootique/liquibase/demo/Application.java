@@ -8,8 +8,12 @@ import io.bootique.liquibase.LiquibaseModule;
 import io.bootique.resource.ResourceFactory;
 
 public class Application implements Module {
-    public static final void main(String[] args) {
-        Bootique.app(args).module(Application.class).autoLoadModules().run();
+    public static void main(String[] args) {
+        Bootique.app(args)
+                .autoLoadModules()
+                .module(Application.class)
+                .exec()
+                .exit();
     }
 
     @Override
@@ -18,6 +22,7 @@ public class Application implements Module {
                 .addCommand(SelectTestCommand.class);
 
         //add change log
-        LiquibaseModule.extend(binder).addChangeLog(new ResourceFactory("classpath:io.bootique.liquibase.demo/changelog_2.xml"));
+        LiquibaseModule.extend(binder)
+                .addChangeLog(new ResourceFactory("classpath:io.bootique.liquibase.demo/changelog_2.xml"));
     }
 }

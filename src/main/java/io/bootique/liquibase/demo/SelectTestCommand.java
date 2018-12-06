@@ -19,7 +19,11 @@ public class SelectTestCommand extends CommandWithMetadata {
 
     @Inject
     public SelectTestCommand(Provider<DataSourceFactory> dataSource) {
-        super(CommandMetadata.builder(SelectTestCommand.class).name("select-test").shortName('s').description("Select from DB").build());
+        super(CommandMetadata.builder(SelectTestCommand.class)
+                .name("select-test")
+                .shortName('s')
+                .description("Select from DB")
+                .build());
         this.dataSource = dataSource;
     }
 
