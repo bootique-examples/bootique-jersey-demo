@@ -1,13 +1,13 @@
 package io.bootique.liquibase.demo;
 
-import com.google.inject.Binder;
-import com.google.inject.Module;
 import io.bootique.BQCoreModule;
+import io.bootique.BaseModule;
 import io.bootique.Bootique;
+import io.bootique.di.Binder;
 import io.bootique.liquibase.LiquibaseModule;
 import io.bootique.resource.ResourceFactory;
 
-public class Application implements Module {
+public class Application extends BaseModule {
     public static void main(String[] args) {
         Bootique.app(args)
                 .autoLoadModules()
