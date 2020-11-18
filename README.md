@@ -23,33 +23,52 @@ mvn package
 
 Now you can check the options available in your app:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar
+java -jar target/bootique-liquibase-demo-2.0.jar
 ```
 
 ```
 OPTIONS
-    --changelog-sync
+      --catalog=catalog_name
+           Catalog against which 'liquibase dropAll' will be executed.
+
+      --config=yaml_location
+           Specifies YAML config location, which can be a file path or a URL.
+
+      -h, --help
+           Prints this message.
+
+      -H, --help-config
+           Prints information about application modules and their configuration options.
+
+      --lb-changelog-sync
            Mark all changes as executed in the database.
 
-    --clear-check-sums
-        Clears all checksums in the current changelog, so they will be
-        recalculated next update.
+      --lb-changelog-sync-sql
+           Writes SQL to mark all changes as executed in the database to STDOUT.
 
-    --config=yaml_location
-        Specifies YAML config location, which can be a file path or a URL.
+      --lb-clear-check-sums
+           Clears all checksums in the current changelog, so they will be recalculated next update.
 
-    -h, --help
-        Prints this message.
+      -x [val], --lb-context[=val]
+           Specifies Liquibase context to control which changeSets will be executed in migration run.
 
-    -H, --help-config
-        Prints information about application modules and their configuration
-        options.
+      -d [val], --lb-default-schema[=val]
+           Specifies the default schema to use for managed database objects and for Liquibase control tables.
 
-    -u, --update
-        Updates DB with available migrations
+      --lb-drop-all
+           Drops all database objects in the configured schema(s). Note that functions, procedures and packages are not dropped.
 
-    -v, --validate
-        Checks the changelog for errors.
+      -u, --lb-update
+           Updates DB with available migrations
+
+      -v, --lb-validate
+           Checks the changelog for errors.
+
+      --schema=schema_name
+           Schema against which 'liquibase dropAll' will be executed.
+
+      --select-test
+           Select from DB
 ```
 
 Provide required configuration via *config1.yml*:
@@ -65,12 +84,12 @@ liquibase:
 ```
 Run migration:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --update
+java -jar target/bootique-liquibase-demo-2.0.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --lb-update
 ```
     
 Check data via --select-test command:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
+java -jar target/bootique-liquibase-demo-2.0.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
 ```
 
 Newly created table "TEST" data is successfully printed:   
@@ -100,12 +119,12 @@ mvn clean package
     
 Then run migration with *config2.yml*:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --update
+java -jar target/bootique-liquibase-demo-2.0.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --lb-update
 ```
     
 Check data via --select-test command:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test        
+java -jar target/bootique-liquibase-demo-2.0.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test        
 ```    
     
 Expected result is error since "TEST" table created in changelog_2.xml overridden by YAML config:
