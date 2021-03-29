@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bootique-examples/bootique-liquibase-demo.svg)](https://travis-ci.org/bootique-examples/bootique-liquibase-demo)
+[![verify](https://github.com/bootique-examples/bootique-liquibase-demo/actions/workflows/verify.yml/badge.svg)](https://github.com/bootique-examples/bootique-liquibase-demo/actions/workflows/verify.yml)
 # bootique-liquibase-demo
 
 A simple example that explains how to migrate data via [Liquibase](http://www.liquibase.org) integrated for [Bootique](http://bootique.io). 
