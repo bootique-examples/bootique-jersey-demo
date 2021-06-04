@@ -23,7 +23,7 @@ mvn package
 
 Now you can check the options available in your app:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar
 ```
 
 ```
@@ -65,12 +65,12 @@ liquibase:
 ```
 Run migration:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --update
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --update
 ```
     
 Check data via --select-test command:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --select-test
 ```
 
 Newly created table "TEST" data is successfully printed:   
@@ -100,12 +100,12 @@ mvn clean package
     
 Then run migration with *config2.yml*:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --update
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --update
 ```
     
 Check data via --select-test command:
 ```bash
-java -jar target/bootique.liquibase.demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test        
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --select-test        
 ```    
     
 Expected result is error since "TEST" table created in changelog_2.xml overridden by YAML config:
