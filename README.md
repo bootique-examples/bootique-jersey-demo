@@ -65,7 +65,7 @@ liquibase:
 ```
 Run migration:
 ```bash
-java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --update
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config1.yml --lb-update
 ```
     
 Check data via --select-test command:
@@ -100,7 +100,7 @@ mvn clean package
     
 Then run migration with *config2.yml*:
 ```bash
-java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --update
+java -jar target/bootique-liquibase-demo-1.0-SNAPSHOT.jar --config=classpath:io.bootique.liquibase.demo/config2.yml --lb-update
 ```
     
 Check data via --select-test command:
